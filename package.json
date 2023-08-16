@@ -4,7 +4,7 @@
   "description": "Client to lock and unlock door via API call",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel src/index.html --open"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/wallacepreston/door-lock/issues"
   },
-  "homepage": "https://github.com/wallacepreston/door-lock#readme"
+  "homepage": "https://github.com/wallacepreston/door-lock#readme",
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "2.9.3",
+    "process": "0.11.10"
+  }
 }

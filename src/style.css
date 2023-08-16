@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif; /* Clean and playful font from Google Fonts */
+  background-color: #f8f1e5; /* Soft beige background */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full viewport height */
+}
+
+#root > * {
+  width: 45rem;
+  margin: 2rem;
+  padding: 1rem;
+  /* Create a more pronounced box shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* Rounded corners */
+  border-radius: 0.5rem;
+  /* Add some softness to the edges */
+  background-color: #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > * {
+  margin: 0.5rem;
+}
+
+/* Color Palette */
+:root {
+  --primary-color: #ff5a5f; /* Coral Red */
+  --secondary-color: #2b2d42; /* Dark Blue */
+  --accent-color: #f77f00; /* Orange */
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 1rem; /* Add some margin for breathing space */
+}
+
+button:hover {
+  background-color: var(--accent-color);
+}
+
+/* Style for li elements */
+li {
+  list-style-type: none;
+  margin: 0.5rem;
+  /* Add rounded corners similar to buttons */
+  border-radius: 0.25rem;
+  /* Add some padding for a more spacious look */
+  padding: 0.5rem 1rem;
+  /* Apply a box shadow for a subtle pop-out effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Add a background color for better visibility */
+  background-color: #f0f0f0;
+  /* Add a transition for smooth hover effect */
+  transition: background-color 0.3s ease;
+
+  /* Add a remove button style */
+  position: relative;
+}
+
+li:hover {
+  /* Change background color on hover */
+  background-color: #e0e0e0;
+}
+
+/* Remove button styles */
+.remove-btn {
+  /* position: absolute;
+  top: 0.25rem;
+  right: 0.25rem; */
+  /* background-color: transparent; */
+  border: none;
+  color: white; /* Coral Red */
+  font-size: .75rem;
+  padding: .25rem .5rem;
+  cursor: pointer;
+  /* Remove default button outline */
+  outline: none;
+}
+
+/* Hover effect for remove button */
+.remove-btn:hover {
+  color: #f77f00; /* Orange */
+}
