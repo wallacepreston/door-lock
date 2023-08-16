@@ -7,5 +7,6 @@ dist
 .parcel-cache
 haters
 .env
+.envrc
 npm-debug.log*
 .npmrc
