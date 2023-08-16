@@ -6,14 +6,12 @@ const LockActionTypes = {
   UNLOCK_DOOR: "UNLOCK_DOOR",
 }
 
+const url = `${API_URL}/lock`;
+
 const useLock = () => {
   const [isLocked, setIsLocked] = useState(false);
 
   const toggleLock = async () => {
-
-    const url = `${API_URL}/lock`;
-    console.log(url);
-
     const res = await fetch(url, {
         method: 'POST',
     });
@@ -33,7 +31,6 @@ const useLock = () => {
   };
 
   const refetch = async () => {
-    const url = `${API_URL}/lock`;
     const res = await fetch(url);
     const data = await res.json();
     setIsLocked(data.properties.locked);
