@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const { API_URL = 'http://localhost:3000/api' } = process.env;
 
 const LockActionTypes = {
@@ -32,7 +32,18 @@ const useLock = () => {
 
   };
 
-  return { isLocked, toggleLock };
+  const refetch = async () => {
+    const url = `${API_URL}/lock`;
+    const res = await fetch(url);
+    const data = await res.json();
+    setIsLocked(data.properties.locked);
+  }
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
+  return { isLocked, toggleLock, refetch };
 };
 
 export default useLock;
