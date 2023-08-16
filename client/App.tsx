@@ -1,6 +1,7 @@
 import React from 'react';
 import useLock from './useLock';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons'
 
 export function App() {
     const { isLocked, toggleLock } = useLock();
@@ -28,11 +29,12 @@ export function App() {
         <section>
             <h2>Status</h2>
             <div id="status">
-                <p>
+                <FontAwesomeIcon icon={isLocked ? faLock : faLockOpen} />
+                <span>
                     {
                         isLocked ? 'Locked' : 'Unlocked'
                     }
-                </p>
+                </span>
             </div>
         </section>
     </>

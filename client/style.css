@@ -108,3 +108,13 @@ li:hover {
 .remove-btn:hover {
   color: #f77f00; /* Orange */
 }
+
+#status {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#status > * {
+  margin: 0.5rem;
+}
