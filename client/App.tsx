@@ -1,15 +1,14 @@
 import React from 'react';
+import useLock from './useLock';
+
 
 export function App() {
+    const { isLocked, toggleLock } = useLock();
 
-    const handleLock = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleLock = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log('lock');
-    }
 
-    const handleUnlock = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        console.log('unlock');
+        toggleLock();
     }
 
     return <>
@@ -18,15 +17,22 @@ export function App() {
         {/* form with input and an area to display output from an api call */}
         <form>
             <div id="controls">
-                <button onClick={handleLock}>Lock</button>
-                <button onClick={handleUnlock}>Unlock</button>
+                <button onClick={handleLock}>
+                    {
+                        isLocked ? 'Unlock' : 'Lock'
+                    }
+                </button>
             </div>
         </form>
 
         <section>
             <h2>Status</h2>
             <div id="status">
-                <p>Locked</p>
+                <p>
+                    {
+                        isLocked ? 'Locked' : 'Unlocked'
+                    }
+                </p>
             </div>
         </section>
     </>

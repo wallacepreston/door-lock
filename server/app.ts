@@ -6,6 +6,8 @@ dotenv.config();
 import express from 'express';
 // Import Seam
 import { Seam } from "seamapi";
+import morgan from 'morgan';
+import cors from 'cors';
 
 const apiKey = process.env.SEAM_API_KEY;
 
@@ -20,6 +22,12 @@ const checkAuth = async () => {
 
 // Create a new express app instance
 const app = express();
+
+// Enable CORS
+app.use(cors());
+
+// logging middleware
+app.use(morgan('dev'));
 
 // Configure Express to parse JSON
 app.use(express.json());
@@ -42,9 +50,27 @@ app.get('/api/check-auth', async (req, res) => {
   }
 });
 
+// GET /lock
+app.get('/api/lock', async (req, res) => {
+  const devices = await seam.locks.list();
+  const [someLock] = devices;
+  return res.send(someLock);
+});
+
 // POST /lock
-app.post('/api/lock', (req, res) => {
-  res.send('locked');
+app.post('/api/lock', async (req, res) => {
+  
+  const devices = await seam.locks.list();
+  const [someLock] = devices;
+  
+  let result;
+  // If the lock is opened, lock it, else unlock it
+  if (someLock.properties.locked) {
+    result = await seam.locks.unlockDoor(someLock.device_id);
+  } else {
+    result = await seam.locks.lockDoor(someLock.device_id);
+  }
+  return res.send(result);
 });
 
 // Start the Express server, displaying the localhost URL
